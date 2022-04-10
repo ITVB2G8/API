@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WeatherdataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Use app\Models;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//weatherdata routes
+Route::get('weather', 'App\Http\Controllers\WeatherdataController@index');
+Route::get('weather/{id}/{type}', 'App\Http\Controllers\WeatherdataController@show');
+Route::get('weather/station/{station_name}', 'App\Http\Controllers\WeatherdataController@search');
+Route::get('weather/{date}', 'App\Http\Controllers\WeatherdataController@searchDate');
+Route::get('weather/{date}/{time}', 'App\Http\Controllers\WeatherdataController@searchTime');
+Route::get('weather/station/{station_name}/{date}', 'App\Http\Controllers\WeatherdataController@searchStationDate');
+Route::get('weather/station/{station_name}/{date}/{time}', 'App\Http\Controllers\WeatherdataController@searchStationDateTime');
+Route::post('weather', 'App\Http\Controllers\WeatherdataController@store');
