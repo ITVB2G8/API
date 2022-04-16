@@ -24,4 +24,8 @@ Route::get('weather/{date}', 'App\Http\Controllers\WeatherdataController@searchD
 Route::get('weather/{date}/{time}', 'App\Http\Controllers\WeatherdataController@searchTime');
 Route::get('weather/station/{station_name}/{date}', 'App\Http\Controllers\WeatherdataController@searchStationDate');
 Route::get('weather/station/{station_name}/{date}/{time}', 'App\Http\Controllers\WeatherdataController@searchStationDateTime');
+Route::post('weather/getdata', 'App\Http\Controllers\WeatherdataController@getData');
 Route::post('weather', 'App\Http\Controllers\WeatherdataController@store');
+
+//TODO Get allowed stations
+
