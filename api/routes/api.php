@@ -25,3 +25,12 @@ Route::get('weather/{date}/{time}', 'App\Http\Controllers\WeatherdataController@
 Route::get('weather/station/{station_name}/{date}', 'App\Http\Controllers\WeatherdataController@searchStationDate');
 Route::get('weather/station/{station_name}/{date}/{time}', 'App\Http\Controllers\WeatherdataController@searchStationDateTime');
 Route::post('weather', 'App\Http\Controllers\WeatherdataController@store');
+
+Route::controller(App\Http\Controllers\UserController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
+
+Route::middleware('auth:sanctum')->group( function () {
+    //protected routes
+});
