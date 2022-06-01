@@ -17,6 +17,9 @@ return [
 
     //'default' => env('DB_CONNECTION', 'mysql1'),
     'default' => 'mysql2',
+=======
+    //'default' => .env('DB_CONNECTION', 'mysql1'),
+    'default' => 'mysql',
 
     /*
     |--------------------------------------------------------------------------
@@ -135,8 +138,8 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+            // 'encrypt' => .env('DB_ENCRYPT', 'yes'),
+            // 'trust_server_certificate' => .env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
         ],
 
     ],
