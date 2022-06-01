@@ -32,7 +32,6 @@ class WeatherdataController extends Controller
 
     public function getData(Request $request)
     {
-
         $collection = collect($request);
         if (isset($collection['Station_name'])) {
             $station_name = $collection['Station_name'];
@@ -50,12 +49,6 @@ class WeatherdataController extends Controller
             $selectiveData = $selectiveData->where("Station_name", $station_name)->get();
             return response()->json($selectiveData, 200);
         } else {
-            return ('Error: No station name give <br> Example:<br> {<br>
-  "Station_name": "91620",<br>
-  "Temperature": "",<br>
-  "Windspeed": "",<br>
-  "Rainfall": ""<br>
-}, ');
         }
 
     }
