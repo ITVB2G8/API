@@ -27,5 +27,13 @@ Route::get('weather/station/{station_name}/{date}/{time}', 'App\Http\Controllers
 Route::post('weather/getData', 'App\Http\Controllers\WeatherdataController@getData');
 Route::post('weather', 'App\Http\Controllers\WeatherdataController@store');
 
-//TODO Get allowed stations
+Route::controller(App\Http\Controllers\UserController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
 
+Route::middleware('auth:sanctum')->group( function () {
+    //protected routes
+});
+=======
+//TODO Get allowed stations

@@ -15,6 +15,9 @@ return [
     |
     */
 
+    //'default' => env('DB_CONNECTION', 'mysql1'),
+    'default' => 'mysql2',
+=======
     //'default' => .env('DB_CONNECTION', 'mysql1'),
     'default' => 'mysql',
 

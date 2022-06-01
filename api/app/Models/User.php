@@ -17,28 +17,18 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use \App\Traits\uuid;
+
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'infix',
         'email',
         'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'address',
+        'place',
+        'country',
+        'postal code',
+        'isAdmin'
     ];
 }
