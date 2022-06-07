@@ -35,5 +35,4 @@ Route::controller(App\Http\Controllers\UserController::class)->group(function(){
 Route::middleware('auth:sanctum')->group( function () {
     //protected routes
 });
-=======
 //TODO Get allowed stations
