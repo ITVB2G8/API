@@ -28,7 +28,7 @@ class User extends Authenticatable
         'address',
         'place',
         'country',
-        'postal code',
+        'postalcode',
         'isAdmin'
     ];
 }

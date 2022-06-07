@@ -18,4 +18,9 @@ abstract class WeatherStationKeyEnum extends BasicEnum {
     const Overcast = null;
     const Winddirection = null;
     const Sealevel_airpressure = null;
+    const Date_from = null;
+    const Date_to = null;
+    const timestamp_from = null;
+    const timestamp_to = null;
+    const timestamp_ago = null;
 }

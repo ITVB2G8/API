@@ -17,10 +17,15 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required',
             'c_password' => 'required|same:password',
+            'address' => 'required',
+            'place' => 'required',
+            'country' => 'required',
+            'postalcode' => 'required',
+            'isAdmin' => 'required'
         ]);
 
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());
+            return 'failed';
         }
 
         $input = $request->all();
@@ -29,7 +34,7 @@ class UserController extends Controller
         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
         $success['first_name'] =  $user->first_name;
 
-        return $this->sendResponse($success, 'User register successfully.');
+        return response()->json($success,200);
     }
 
     public function login(Request $request)
@@ -39,7 +44,7 @@ class UserController extends Controller
             $success['token'] =  $user->createToken('MyApp')->plainTextToken;
             $success['name'] =  $user->name;
 
-            return $this->sendResponse($success, 'User login successfully.');
+            return response()->json($success, 200);
         }
         else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
