@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'ability:weather,website'])->group( function 
     Route::post('weather/getData', 'App\Http\Controllers\WeatherdataController@getData');
 });
 
-Route::middleware(['auth:sanctum', 'abilities:userinfo'])->group( function () {
+Route::middleware(['auth:sanctum', 'ability:userinfo,website'])->group( function () {
     //protected routes
 });
 
