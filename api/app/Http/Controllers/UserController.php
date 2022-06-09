@@ -14,7 +14,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique',
             'password' => 'required',
             'c_password' => 'required|same:password',
             'address' => 'required',
@@ -31,7 +31,12 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->plainTextToken;
+        if($user->isAdmin == 1){
+            $success['token'] =  $user->createToken('MyApp', ['website'])->plainTextToken;
+        }
+        else {
+            $success['token'] =  $user->createToken('MyApp', ['weather', 'userinfo'])->plainTextToken;
+        }
         $success['first_name'] =  $user->first_name;
 
         return response()->json($success,200);
@@ -41,8 +46,16 @@ class UserController extends Controller
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-            $success['name'] =  $user->name;
+            $user->tokens()->delete();
+            if($user->isAdmin == 1){
+                $success['token'] =  $user->createToken('MyApp', ['website'])->plainTextToken;
+            }
+            else {
+                $success['token'] =  $user->createToken('MyApp', ['weather', 'userinfo'])->plainTextToken;
+            }
+            $success['first_name'] =  $user->first_name;
+            $success['last_name'] =  $user->last_name;
+            $success['user_id'] =  $user->id;
 
             return response()->json($success, 200);
         }
